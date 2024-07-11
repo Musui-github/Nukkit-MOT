@@ -73,7 +73,6 @@ public abstract class ProjectileItem extends Item {
                         player.onThrowEnderPearl();
                     }
                     projectile.spawnToAll();
-                    player.getLevel().addLevelSoundEvent(player, LevelSoundEventPacket.SOUND_BOW);
                 }
             }
         }

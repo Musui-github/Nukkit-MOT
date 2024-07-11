@@ -39,3 +39,6 @@ resource_packs/*
 dependency-reduced-pom.xml
 *.log
 /logs
+*.jar
+*.jar
+out/artifacts/Nukkit_jar/Nukkit.jar
