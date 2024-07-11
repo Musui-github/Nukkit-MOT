@@ -1971,8 +1971,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             if (diff > 0.5) {
                 PlayerInvalidMoveEvent invalidMoveEvent = new PlayerInvalidMoveEvent(this, true);
                 this.getServer().getPluginManager().callEvent(invalidMoveEvent);
-                if (!invalidMoveEvent.isCancelled() && (invalidMotion = invalidMoveEvent.isRevert())) {
-                    this.server.getLogger().warning(this.getServer().getLanguage().translateString("nukkit.player.invalidMove", this.getName()));
+                if (!invalidMoveEvent.isCancelled()) {
+                    invalidMotion = invalidMoveEvent.isRevert();
                 }
             }
 
@@ -2749,7 +2749,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         this.loggedIn = true;
         this.server.getLogger().info(this.getServer().getLanguage().translateString("nukkit.player.logIn",
                 TextFormat.AQUA + this.username + TextFormat.WHITE,
-                this.getDisplayName(),
+                this.getAddress(),
                 String.valueOf(this.getPort()),
                 this.protocol + " (" + Utils.getVersionByProtocol(this.protocol) + ")"));
 
@@ -3366,8 +3366,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     break;
                 }
 
-                // 传送玩家后，可能会由于网络延迟接收错误数据包
-                // 在这种情况下为了避免错误调整玩家视角，直接忽略移动数据包
                 if (this.lastTeleportTick + 10 > this.server.getTick()
                         && clientPosition.distance(this.temporalVector.setComponents(this.lastX, this.lastY, this.lastZ)) < 5) {
                     break;
@@ -3444,15 +3442,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     case PlayerActionPacket.ACTION_JUMP:
                         if (this.isMovementServerAuthoritative()) break;
                         if (this.inAirTicks > 40 && this.checkMovement && !server.getAllowFlight() && !this.isCreative() && !this.isSwimming() && !this.isGliding()) {
-                            /*if (this.inAirTicks < 150) {
-                                PlayerInvalidMoveEvent playerInvalidMoveEvent = new PlayerInvalidMoveEvent(this, true);
-                                this.getServer().getPluginManager().callEvent(playerInvalidMoveEvent);
-                                if (!playerInvalidMoveEvent.isCancelled()) {
-                                    this.motionY = -4;
-                                }
-                            } else {*/
-                            this.kick(PlayerKickEvent.Reason.FLYING_DISABLED, "Flying is not enabled on this server", true, "type=ACTION_JUMP, inAirTicks=" + this.inAirTicks);
-                            //}
+                            this.kick(PlayerKickEvent.Reason.FLYING_DISABLED, "§cFlying is not enabled on this server", true, "type=ACTION_JUMP, inAirTicks=" + this.inAirTicks);
                             break;
                         }
                         this.server.getPluginManager().callEvent(new PlayerJumpEvent(this));
