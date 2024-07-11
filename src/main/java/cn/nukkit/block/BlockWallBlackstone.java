@@ -1,6 +1,5 @@
 package cn.nukkit.block;
 
-import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -38,7 +37,7 @@ public class BlockWallBlackstone extends BlockWall {
     public boolean canHarvestWithHand() {
         return false;
     }
-    
+
     @Override
     public int getToolType() {
         return ItemTool.TYPE_PICKAXE;
@@ -48,7 +47,7 @@ public class BlockWallBlackstone extends BlockWall {
     public int getToolTier() {
         return ItemTool.TIER_WOODEN;
     }
-    
+
     @Override
     public BlockColor getColor() {
         return BlockColor.BLACK_BLOCK_COLOR;

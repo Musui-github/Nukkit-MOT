@@ -1991,7 +1991,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         double deltaAngle = Math.abs(this.lastYaw - target.getYaw()) + Math.abs(this.lastPitch - target.getPitch());
 
         handleLogicInMove(invalidMotion,distance);
-        
+
         if (delta > 0.0005 || deltaAngle > 1) {
             boolean isFirst = this.firstMove;
             this.firstMove = false;
@@ -2749,7 +2749,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         this.loggedIn = true;
         this.server.getLogger().info(this.getServer().getLanguage().translateString("nukkit.player.logIn",
                 TextFormat.AQUA + this.username + TextFormat.WHITE,
-                this.getAddress(),
+                this.getDisplayName(),
                 String.valueOf(this.getPort()),
                 this.protocol + " (" + Utils.getVersionByProtocol(this.protocol) + ")"));
 

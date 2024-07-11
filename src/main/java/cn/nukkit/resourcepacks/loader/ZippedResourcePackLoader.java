@@ -9,7 +9,6 @@ import org.iq80.leveldb.util.FileUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
