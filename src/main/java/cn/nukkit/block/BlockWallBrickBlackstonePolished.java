@@ -1,5 +1,7 @@
 package cn.nukkit.block;
 
+import cn.nukkit.item.Item;
+
 public class BlockWallBrickBlackstonePolished extends BlockWallBlackstone {
 
     public BlockWallBrickBlackstonePolished() {

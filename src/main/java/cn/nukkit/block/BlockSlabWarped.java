@@ -1,5 +1,6 @@
 package cn.nukkit.block;
 
+import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -31,7 +32,7 @@ public class BlockSlabWarped extends BlockSlab {
     public int getToolType() {
         return ItemTool.TYPE_AXE;
     }
-
+    
     @Override
     public BlockColor getColor() {
         return BlockColor.WARPED_STEM_BLOCK_COLOR;

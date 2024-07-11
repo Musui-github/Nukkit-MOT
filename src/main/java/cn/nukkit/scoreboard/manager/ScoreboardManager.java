@@ -13,7 +13,12 @@ import cn.nukkit.scoreboard.storage.IScoreboardStorage;
 import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 @Getter
 public class ScoreboardManager implements IScoreboardManager {
