@@ -137,7 +137,7 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
                 }
 
                 // Critical hit
-                if (damager instanceof Player && !damager.onGround) {
+                if (damager instanceof Player && !damager.onGround && !damager.isSprinting() && fallDistance > 0 && effects.containsKey(Effect.BLINDNESS) && !isInsideOfWater()) {
                     AnimatePacket animate = new AnimatePacket();
                     animate.action = AnimatePacket.Action.CRITICAL_HIT;
                     animate.eid = getId();
@@ -486,7 +486,7 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
     public float getMovementSpeed() {
         return this.movementSpeed;
     }
-    
+
     public int getAirTicks() {
         return this.airTicks;
     }
